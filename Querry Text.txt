@@ -1,0 +1,59 @@
+ADDRESS BOOK SERVICE SQL
+========================
+UC-1 CREATE DATABASE
+--------------------
+show databases;
+create database AddressBookService;
+
+UC-2 CREATE TABLE
+-----------------
+show databases;
+use database AddressBookService;
+create table AddressTable(FirstName varchar(500),
+                               LastName varchar(500),
+                               Address varchar(500),
+                               City varchar(500),
+                               State varchar(500),
+                               Zip int,
+                               Phone int,
+                               Email varchar(500),
+                               primary key(FirstName)
+                               );
+select * from AddressBookTable;
+
+UC-3 INSERT TABLE
+-----------------
+insert into AddressTable values('Raghav','Ravi','Erode','Erode','Tamil-Nadu',638014,9566525472,'raghav@gmail.com');
+insert into AddressTable values('Vignesh','Waran','PVS','Erode','Tamil-Nadu',638056,7339370023,'vickyshanestark@gmail.com');
+select * from AddressTable;   
+
+UC-4 EDIT TABLE/UPDATE TABLE/ALTER TABLE
+----------------------------------------
+update AddressTable set Zip = 638002 where FirstName = 'Raghav';
+select * from AddressTable;
+
+UC-5 DELETE TABLE
+-----------------
+delete from AddressTable where FirstName = 'Vignesh';
+select * from AddressTable;
+
+UC-6 RETRIEVE DATA
+------------------
+select City,State from AddressTable where FirstName = 'Govardhan';
+
+UC-7 TABLE COUNT
+----------------
+select count(City = 'Erode')from AddressTable;
+select count(State = 'Tamil-Nadu')from AddressTable;
+
+UC-12 ER DIAGRAM
+----------------
+create database AddressBookService;
+use AddressBookService;
+create table AddressTable(SNo int,FirstName varchar(300),LastName varchar(300),Address varchar(300),City varchar(300),State varchar(300),Zip int,Phone varchar(300),Email varchar(300),primary key(FirstName));
+insert into AddressTable values(1,'Raghav','Ravi','Erode','Erode','Tamil-Nadu',638014,'9566525472','raghav@gmail.com');
+select * from AddressTable;
+create table BookTable(SNo int,FirstName varchar(300),LastName varchar(300),Address varchar(300),City varchar(300),State varchar(300),Zip int,Phone varchar(300),Email varchar(300),primary key(FirstName),foreign key(FirstName) references AddressTable(FirstName));
+insert into BookTable values(1,'Vignesh','Waran','PVS','Erode','Tamil-Nadu',638056,7339370023,'vickyshanestark@gmail.com');
+select * from BookTable;
+    
